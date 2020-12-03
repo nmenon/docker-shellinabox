@@ -16,6 +16,13 @@ ENV SIAB_USERCSS="Normal:+/etc/shellinabox/options-enabled/00+Black-on-White.css
     SIAB_PKGS=none \
     SIAB_SCRIPT=none
 
+# In case of Proxy based environment, leave the following enabled.
+# in Direct internet cases, comment out the following two lines.
+#--- PROXY SETUP START
+# COPY proxy-configuration/ /
+# RUN  export DEBIAN_FRONTEND=noninteractive;apt-get update;apt-get install -y apt-transport-https socket corkscrew apt-utils
+#--- END START
+
 RUN apt-get update && apt-get install -y openssl curl openssh-client sudo shellinabox && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
